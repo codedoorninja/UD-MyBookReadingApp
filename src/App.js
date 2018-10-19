@@ -19,7 +19,6 @@ class BooksApp extends React.Component {
   }
   
   onUpdateBook = (book, shelf) => {
-    //alert("update");
     BooksAPI.update(book, shelf)
     .then((e) => {
         this.componentDidMount();

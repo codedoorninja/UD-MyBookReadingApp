@@ -9,7 +9,6 @@ class SearchBooks extends Component {
 		query: ''
 	}
 	updateQuery = (query) => {
-      console.log(query);
 		this.setState(() => ({
 			query: query
 		}))
@@ -35,7 +34,7 @@ class SearchBooks extends Component {
   render() {
     	const { searchResults } = this.state
 	return (
-      <div className="search-books">
+		<div className="search-books">
             <div className="search-books-bar">
                 <Link
                   className='close-search'
@@ -52,13 +51,13 @@ class SearchBooks extends Component {
               </div>
             </div>
             <div className="search-books-results">
-              	<ol className="books-grid">
+            	<ol className="books-grid">
 					{searchResults.length > 0 ? searchResults.map((book) => (
-						<SingleBook key={book.id} book={book} onUpdateBook={this.onUpdateBook}/>
+						<SingleBook key={book.id} book={book} onUpdateBook={this.onUpdateBook} books={this.props.books}/>
 					)) : ''}
 				</ol>
             </div>
-          </div>
+		</div>
     )
   }
 }
