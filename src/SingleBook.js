@@ -5,7 +5,7 @@ class SingleBook extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = { value: this.props.book.shelf };
+    this.state = { value: 'none' };
   }
   	
 	handleChange(event) {
@@ -35,17 +35,16 @@ class SingleBook extends Component {
 
   render() {
 	const { book } = this.props
+
     return (
 	<li key={book.id}>
 		<div className="book">
 			<div className="book-top">
-				<div className="book-cover" 
-				style={{ 
-       				width: 128, 
-       				height: 193, 
-       				backgroundImage: `url(${book.imageLinks.smallThumbnail})` 
-				}}>
-				</div>
+              {book.imageLinks && <div className="book-cover" style={{backgroundImage: `url(${book.imageLinks.smallThumbnail})`, 
+                  width: 128, 
+                  height: 193,
+                  }}>
+              </div>}
 				<div className="book-shelf-changer">
 					<select value={this.state.value} onChange={this.handleChange}>
 						<option value="move" disabled>Move to...</option>
